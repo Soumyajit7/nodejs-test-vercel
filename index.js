@@ -23,7 +23,7 @@ app.post('/schedule', (req, res) => {
     // schedule a task to run at the specified time every day
     cron.schedule(`0 ${time.split(':')[1]} ${time.split(':')[0]} * * *`, () => {
         console.log('Turning off the light...');
-        roomState.light = 0;
+        roomState.light = roomState.light_state ? 0 : 1;
     });
 
     res.json({ message: `Scheduled a task to turn off the light at ${time} every day.` });
