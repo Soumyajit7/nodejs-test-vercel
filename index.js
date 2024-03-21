@@ -29,6 +29,11 @@ app.post('/schedule', (req, res) => {
     res.json({ message: `Scheduled a task to turn off the light at ${time} every day.` });
 });
 
+app.get('/demo', (req, res) => {
+    roomState.light_state = roomState.light_state ? 0 : 1;
+    res.json(roomState);
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
